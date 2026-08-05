@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function TabsLayout() {
+export default function signUp() {
   return (
     <View>
-      <Text>tabs</Text>
+      <Text>signUp</Text>
     </View>
   )
 }
