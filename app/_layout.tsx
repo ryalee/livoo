@@ -62,7 +62,7 @@ export default function RootLayout() {
   console.log({ loaded, error });
 
   return (
-    <GestureHandlerRootView>
+    <GestureHandlerRootView className="bg-red-500">
       {/* <AuthGuard /> */}
 
       <Stack screenOptions={{ headerShown: false }}>
