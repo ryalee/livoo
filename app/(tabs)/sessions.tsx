@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function sections() {
   return (
-    <View>
-      <Text>sections</Text>
+    <View className="flex-1 items-center justify-center bg-bg">
+      <Text>sessions</Text>
     </View>
   )
 }

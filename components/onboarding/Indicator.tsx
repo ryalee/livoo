@@ -14,8 +14,8 @@ export function Indicator({ total, current }: Props) {
           key={index}
           className={`h-2 rounded-full ${
             current === index
-              ? "w-8 bg-yellow-400"
-              : "w-2 bg-zinc-300"
+              ? "w-8 bg-[#FF6161]"
+              : "w-2 bg-[#F1DED1]"
           }`}
         />
       ))}

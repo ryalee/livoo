@@ -15,7 +15,7 @@ export default function Onboarding() {
 
   function handleNext() {
     if (isLast) {
-      router.replace("/(auth)/sign-in");
+      router.replace("/(tabs)/");
       return;
     }
 
@@ -44,9 +44,7 @@ export default function Onboarding() {
             onPress={handleNext}
           />
         </View>
-
       </View>
-
     </View>
   );
 }
