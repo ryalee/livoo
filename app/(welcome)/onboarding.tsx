@@ -1,44 +1,52 @@
-import { View, Text } from "react-native";
-import React, { useState } from "react";
+import { useState } from "react";
+import { View } from "react-native";
+import { router } from "expo-router";
 
-const slides = [
-  {
-    id: 1,
-    title: "Leia sem pressa.",
-    description:
-      "Crie uma rotina de leitura simples, sem pressão e sem distrações.",
-    image: require("@/assets/onboarding/1.png"),
-  },
+import { onboardingSlides } from "../../constants/onboarding";
 
-  {
-    id: 2,
-    title: "Transforme minutos em capítulos.",
-    description:
-      "Poucos minutos por dia são suficientes para construir um hábito.",
-    image: require("@/assets/onboarding/2.png"),
-  },
-
-  {
-    id: 3,
-    title: "Acompanhe sua jornada.",
-    description: "Veja seu progresso crescer sessão após sessão.",
-    image: require("@/assets/onboarding/3.png"),
-  },
-
-  {
-    id: 4,
-    title: "Pronto para começar?",
-    description: "Adicione seu primeiro livro e faça seu primeiro voo.",
-    image: require("@/assets/onboarding/4.png"),
-  },
-];
+import { OnboardingSlide } from "../../components/onboarding/OnboardingSlide";
+import { Indicator } from "../../components/onboarding/Indicator";
+import { NextButton } from "../../components/onboarding/NextButton";
 
 export default function Onboarding() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const isLast = currentSlide === onboardingSlides.length - 1;
+
+  function handleNext() {
+    if (isLast) {
+      router.replace("/(auth)/sign-in");
+      return;
+    }
+
+    setCurrentSlide((prev) => prev + 1);
+  }
+
   return (
-    <View>
-      <Text></Text>
+    <View className="flex-1 bg-white">
+
+      <View className="flex-1">
+        <OnboardingSlide
+          slide={onboardingSlides[currentSlide]}
+        />
+      </View>
+
+      <View className="px-8 pb-12">
+
+        <Indicator
+          total={onboardingSlides.length}
+          current={currentSlide}
+        />
+
+        <View className="mt-8">
+          <NextButton
+            isLast={isLast}
+            onPress={handleNext}
+          />
+        </View>
+
+      </View>
+
     </View>
   );
 }
