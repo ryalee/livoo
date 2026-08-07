@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
-import { Image } from "react-native";
+import { BlurView } from "expo-blur";
+
 import { TabIcon } from "@/components/navigation/TabIcon";
 
 export default function TabsLayout() {
@@ -9,24 +9,38 @@ export default function TabsLayout() {
       screenOptions={{
         headerShown: false,
 
+        tabBarShowLabel: false,
+
         tabBarStyle: {
           position: "absolute",
-
-          left: 24,
-          right: 24,
-          bottom: 32,
-
-          backgroundColor: "transparent",
-          // width: "90%",
-
-          elevation: 0,
+          // left: 20,
+          // right: 20,
+          bottom: 10,
+          height: 90,
+          borderRadius: 100,
           borderTopWidth: 0,
+          elevation: 0,
           shadowOpacity: 0,
-
-          height: 55,
+          paddingTop: 25,
+          marginHorizontal: 20,
+          width: "90%",
+          backgroundColor: "transparent",
+          overflow: "hidden",
         },
 
-        tabBarShowLabel: false,
+        tabBarBackground: () => (
+          <BlurView
+            intensity={10}
+            tint="light"
+            experimentalBlurMethod="dimezisBlurView"
+            style={{
+              flex: 1,
+              borderRadius: 100,
+              overflow: "hidden",
+              borderWidth: 1,
+            }}
+          />
+        ),
       }}
     >
       <Tabs.Screen
@@ -40,9 +54,6 @@ export default function TabsLayout() {
               inactiveIcon={require("../../assets/images/icons/book-inactive.png")}
             />
           ),
-          labelStyle: ({ focused }) => ({
-            color: focused ? "#FF6161" : "#1E1E1E",
-          }),
         }}
       />
 
