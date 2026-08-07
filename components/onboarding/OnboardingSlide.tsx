@@ -10,6 +10,7 @@ interface Props {
 export function OnboardingSlide({ slide }: Props) {
   return (
     <View className="flex-1 items-center justify-center px-8">
+      {/* <Text className="text-md font-titleMedium text-zinc-500">{slide.id} / 5</Text> */}
 
       <Image
         source={slide.image}

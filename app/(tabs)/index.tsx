@@ -1,19 +1,33 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { Redirect, router } from 'expo-router'
-import MetaDiaria from '@/components/home/MetaDiaria'
-import { ScrollView } from 'react-native-gesture-handler'
-import EmAndamento from '@/components/home/EmAndamento'
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import { Redirect, router } from "expo-router";
+import MetaDiaria from "@/components/home/EstatisticasRapidas";
+import { ScrollView } from "react-native-gesture-handler";
+import EmAndamento from "@/components/home/EmAndamento";
+import UltimaSessao from "@/components/home/LastSession";
+
+function getGreeting() {
+  const hour = new Date().getHours();
+
+  if (hour >= 5 && hour < 12) {
+    return "Bom dia";
+  }
+  if (hour >= 12 && hour < 18) {
+    return "Boa tarde";
+  }
+
+  return "Boa noite";
+}
 
 export default function HomeScreen() {
-  
+  const greeting = getGreeting();
 
   return (
     <ScrollView className="flex-1 bg-bg">
       <View className="flex-row items-center justify-between px-8 py-2 mt-[55px]">
-        <View>
-          <Text className="font-titleMedium text-2xl">Bom dia, username! </Text>
-          <Text className="font-body text-xl">Que tal ler um pouco hoje?</Text>
+        <View className="my-5">
+          <Text className="font-titleMedium text-2xl">{greeting}, userName! </Text>
+          <Text className="font-body text-lg">Que tal ler um pouco hoje?</Text>
         </View>
 
         <TouchableOpacity
@@ -30,13 +44,9 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
 
-      <MetaDiaria/>
-
-      <EmAndamento/>
-      <EmAndamento/>
-      <EmAndamento/>
-
-
+      <MetaDiaria />
+      <EmAndamento />
+      <UltimaSessao />
     </ScrollView>
-  )
+  );
 }
